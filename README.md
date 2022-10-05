@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [Solution]()
--   Live Site URL: [Live Site]()
+-   Solution URL: [Solution](https://github.com/fidellim/Drum-Machine)
+-   Live Site URL: [Live Site](https://drum-machine-fidellim.netlify.app/)
 
 ## My process
 
