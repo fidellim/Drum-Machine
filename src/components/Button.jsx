@@ -25,16 +25,16 @@ const Button = ({ bank }) => {
             sound.current = new Audio(url)
             sound.current.volume = volume / 100
             sound.current.play()
-            buttonRef.current.classList.add('bg-black')
-            buttonRef.current.classList.remove('bg-lime-800')
+            buttonRef.current.classList.add('bg-lightBlue')
+            buttonRef.current.classList.remove('bg-darkBlue')
             setName(id)
         }
     }
 
     const onKeyUpHandle = (e) => {
         if (e.keyCode === keyCode) {
-            buttonRef.current.classList.add('bg-lime-800')
-            buttonRef.current.classList.remove('bg-black')
+            buttonRef.current.classList.add('bg-darkBlue')
+            buttonRef.current.classList.remove('bg-lightBlue')
         }
     }
 
@@ -46,13 +46,12 @@ const Button = ({ bank }) => {
             window.removeEventListener('keyup', onKeyUpHandle)
         }
     }, [volume, togglePower, toggleBank, arrOfMusic])
-    //
 
     return (
         <button
             onClick={buttonHandle}
             ref={buttonRef}
-            className="active:bg-black bg-lime-800 text-zinc-50 shadow-[rgba(0,0,0,0.15)_3px_3px_0px_0px] w-[50px] h-[50px] rounded-sm"
+            className="active:bg-lightBlue bg-darkBlue shadow-[rgba(0,0,0,0.15)_3px_3px_0px_0px] w-[75px] h-[75px] rounded-md"
         >
             <div>
                 {keyTrigger} <audio src={url} />
