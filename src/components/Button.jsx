@@ -10,7 +10,7 @@ const Button = ({ bank }) => {
     const buttonRef = useRef()
 
     const buttonHandle = () => {
-        console.log(togglePower)
+        // console.log(togglePower)
         if (togglePower) {
             sound.current = new Audio(url)
             sound.current.volume = volume / 100
@@ -19,43 +19,44 @@ const Button = ({ bank }) => {
         }
     }
 
-    const onKeyDownHandle = (e) => {
-        console.log(e.keyCode)
-        if (e.keyCode === keyCode && togglePower) {
-            sound.current = new Audio(url)
-            sound.current.volume = volume / 100
-            sound.current.play()
-            buttonRef.current.classList.add('bg-lightBlue')
-            buttonRef.current.classList.remove('bg-darkBlue')
-            setName(id)
-        }
-    }
-
-    const onKeyUpHandle = (e) => {
-        if (e.keyCode === keyCode) {
-            buttonRef.current.classList.add('bg-darkBlue')
-            buttonRef.current.classList.remove('bg-lightBlue')
-        }
-    }
-
     useEffect(() => {
+        const onKeyDownHandle = (e) => {
+            // console.log(e.keyCode)
+            if (e.keyCode === keyCode && togglePower) {
+                sound.current = new Audio(url)
+                sound.current.volume = volume / 100
+                sound.current.play()
+                buttonRef.current.classList.add('bg-lightBlue')
+                buttonRef.current.classList.remove('bg-darkBlue')
+                setName(id)
+            }
+        }
+
+        const onKeyUpHandle = (e) => {
+            if (e.keyCode === keyCode) {
+                buttonRef.current.classList.add('bg-darkBlue')
+                buttonRef.current.classList.remove('bg-lightBlue')
+            }
+        }
+
         window.addEventListener('keydown', onKeyDownHandle)
         window.addEventListener('keyup', onKeyUpHandle)
         return () => {
             window.removeEventListener('keydown', onKeyDownHandle)
             window.removeEventListener('keyup', onKeyUpHandle)
         }
-    }, [volume, togglePower, toggleBank, arrOfMusic])
+    }, [volume, togglePower, toggleBank, arrOfMusic, id, keyCode, setName, url])
 
     return (
+        // drum-pad class is for FreeCodeCamp test
         <button
             onClick={buttonHandle}
             ref={buttonRef}
-            className="active:bg-lightBlue bg-darkBlue shadow-[rgba(0,0,0,0.15)_3px_3px_0px_0px] w-[75px] h-[75px] rounded-md"
+            id={id}
+            className="drum-pad active:bg-lightBlue bg-darkBlue shadow-[rgba(0,0,0,0.15)_3px_3px_0px_0px] w-[75px] h-[75px] rounded-md"
         >
-            <div>
-                {keyTrigger} <audio src={url} />
-            </div>
+            <p>{keyTrigger}</p>
+            <audio src={url} id={keyTrigger} ref={sound} className="clip" />
         </button>
     )
 }
