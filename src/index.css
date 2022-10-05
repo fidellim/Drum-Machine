@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+        --darkBlue: #05386b;
+        --darkGreen: #5cdb95;
+        --lightGray: #edf5e1;
+        --lightBlue: #1e5b99;
+    }
+
+    body {
+        color: var(--lightGray);
+    }
+}
+
 input[type='range'] {
     /* height: 50px;
     width: 10px; */
