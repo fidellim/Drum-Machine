@@ -33,30 +33,37 @@ const App = () => {
                     setName,
                 }}
             >
-                <div className="w-screen h-screen flex flex-col items-center justify-center">
-                    <h1 className="font-serif text-4xl py-4">Drum Machine</h1>
+                <div className="w-screen min-h-screen flex flex-col items-center justify-center bg-darkGreen">
+                    <h1 className="font-serif text-4xl py-4 text-darkBlue text-center ">
+                        Drum Machine
+                    </h1>
                     <main>
-                        <div className="py-4 px-5 border-4 border-violet-900 flex flex-col justify-center items-center">
-                            <div className="flex gap-3">
-                                {arrOfMusic &&
-                                    arrOfMusic.map((bank) => (
-                                        <Button bank={bank} key={bank.id} />
-                                    ))}
+                        <div className="py-4 px-5 rounded-md border-4 border-darkBlue flex flex-col justify-center items-center">
+                            <div>
+                                <RangeSlider />
+                                <div className="grid grid-cols-2 place-items-center sm:grid-cols-3 gap-3">
+                                    {arrOfMusic &&
+                                        arrOfMusic.map((bank) => (
+                                            <Button bank={bank} key={bank.id} />
+                                        ))}
+                                </div>
                             </div>
 
-                            <h2>{name}</h2>
-
-                            <RangeSlider />
-                            <ToggleSwitch
-                                name="Power"
-                                // setState={() => setTogglePower(!togglePower)}
-                                setState={setTogglePower}
-                            />
-                            <br></br>
-                            <ToggleSwitch
-                                name="Bank"
-                                setState={setToggleBank}
-                            />
+                            <div className="flex flex-col  sm:flex-row gap-3 sm:gap-0 w-full h-full justify-center items-center pt-4">
+                                <h2 className="flex-1 w-full h-full text-center text-lg text-darkBlue">
+                                    {name}
+                                </h2>
+                                <div className="flex-1 w-full h-full flex flex-col gap-2 justify-center items-end">
+                                    <ToggleSwitch
+                                        name="Power"
+                                        setState={setTogglePower}
+                                    />
+                                    <ToggleSwitch
+                                        name="Bank"
+                                        setState={setToggleBank}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </main>
                 </div>
