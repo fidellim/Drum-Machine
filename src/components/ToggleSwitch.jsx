@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { Context } from '../App'
 
 const ToggleSwitch = ({ name, setState }) => {

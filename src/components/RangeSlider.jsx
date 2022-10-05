@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { Context } from '../App'
 import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 
