@@ -1,29 +1,40 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
+import { Context } from '../App'
 
 const Button = ({ bank }) => {
+    const { volume, togglePower, toggleBank, arrOfMusic, setName } =
+        useContext(Context)
     const { keyCode, keyTrigger, id, url } = bank
 
     const sound = useRef()
     const buttonRef = useRef()
 
     const buttonHandle = () => {
-        sound.current = new Audio(url)
-        sound.current.play()
+        console.log(togglePower)
+        if (togglePower) {
+            sound.current = new Audio(url)
+            sound.current.volume = volume / 100
+            sound.current.play()
+            setName(id)
+        }
     }
 
     const onKeyDownHandle = (e) => {
-        if (e.keyCode === keyCode) {
+        console.log(e.keyCode)
+        if (e.keyCode === keyCode && togglePower) {
             sound.current = new Audio(url)
+            sound.current.volume = volume / 100
             sound.current.play()
             buttonRef.current.classList.add('bg-black')
             buttonRef.current.classList.remove('bg-lime-800')
+            setName(id)
         }
     }
 
     const onKeyUpHandle = (e) => {
         if (e.keyCode === keyCode) {
             buttonRef.current.classList.add('bg-lime-800')
-            buttonRef.current.classList.remove('bg-lime-800bg-black')
+            buttonRef.current.classList.remove('bg-black')
         }
     }
 
@@ -34,7 +45,8 @@ const Button = ({ bank }) => {
             window.removeEventListener('keydown', onKeyDownHandle)
             window.removeEventListener('keyup', onKeyUpHandle)
         }
-    }, [])
+    }, [volume, togglePower, toggleBank, arrOfMusic])
+    //
 
     return (
         <button
