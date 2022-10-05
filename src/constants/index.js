@@ -47,7 +47,6 @@ export const bankOne = [
         id: 'Kick',
         url: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
     },
-
     {
         keyCode: 67,
         keyTrigger: 'C',
