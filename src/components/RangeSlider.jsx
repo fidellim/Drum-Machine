@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { Context } from '../App'
 
 const RangeSlider = () => {
-    const [range, setRange] = useState(50)
+    const { volume, setVolume } = useContext(Context)
 
     const handleChange = (e) => {
         console.log(e.target.value)
-        setRange(e.target.value)
+        setVolume(e.target.value)
     }
 
     return (
@@ -15,7 +16,7 @@ const RangeSlider = () => {
                 type="range"
                 min="0"
                 max="100"
-                value={range}
+                value={volume}
                 onChange={handleChange}
             />
         </div>
