@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Button from './components/Button'
+import RangeSlider from './components/RangeSlider'
+import { bankOne } from './constants'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <>
+            <main className="w-screen h-screen flex justify-center items-center">
+                <div className="flex gap-3">
+                    {bankOne.map((bank) => (
+                        <Button bank={bank} key={bank.id} />
+                    ))}
+                </div>
+
+                <RangeSlider />
+            </main>
+        </>
+    )
 }
 
-export default App;
+export default App
